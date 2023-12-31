@@ -19,9 +19,9 @@ const updateUI = (current, hourly, daily) => {
     const dailyWeatherElement = document.getElementById('daily-weather');
 
     // Update the current weather
-    currentWeatherElement.innerHTML = ```
+    currentWeatherElement.innerHTML = `
         <h2>Current Weather</h2>
-         <img src="http://openweathermap.org/img/w/${current.weatherIcon}.png" alt="Weather icon">
+        <img src="http://openweathermap.org/img/w/${current.weatherIcon}.png" alt="Weather icon">
         <p>Time: ${current.time}</p>
         <p>Current forecast: ${current.weatherDescription}</p>
         <p>Temperature: ${current.temp}</p>
@@ -29,10 +29,10 @@ const updateUI = (current, hourly, daily) => {
         <p>Humidity: ${current.humidity}</p>
         <p>Wind speed: ${current.windSpeed}</p>
         <p>Wind direction: ${current.windDeg}</p>
-    ```
+    `;
 
     // Update the hourly weather
-    hourlyWeatherElement.innerHTML = hourly.map(hour => ```
+    hourlyWeatherElement.innerHTML = hourly.map(hour => `
         <div>
             <h2>Hour: ${hour.time}</h2>
             <img src="http://openweathermap.org/img/w/${hour.weatherIcon}.png" alt="Weather icon">
@@ -43,24 +43,24 @@ const updateUI = (current, hourly, daily) => {
             <p>wind speed: ${hour.windSpeed}</p>
             <p>wind direction: ${hour.windDeg}</p>
         </div>
-    ```).join('');
+    `).join('');
 
     // Update the daily weather
-    dailyWeatherElement.innerHTML = daily.map(day => ```
-<div>
-    <h2>Day: ${day.time}</h2>
-    <img src="http://openweathermap.org/img/w/${day.weatherIcon}.png" alt="Weather icon">
-    <p>Weather Description: ${day.weatherDescription}</p>
-    <p>Weather Summary: ${day.weatherSummary}</p>
-    <p>Min Temperature: ${day.minTemp}</p>
-    <p>Max Temperature: ${day.maxTemp}</p>
-    <p>Day Feels Like: ${day.dayFeelsLike}</p>
-    <p>Night Feels Like: ${day.nightFeelsLike}</p>
-    <p>Humidity: ${day.humidity}</p>
-    <p>Wind Speed: ${day.windSpeed}</p>
-    <p>Wind Direction: ${day.windDeg}</p>
-</div>
-    ```).join('');
+    dailyWeatherElement.innerHTML = daily.map(day => `
+        <div>
+            <h2>Day: ${day.time}</h2>
+            <img src="http://openweathermap.org/img/w/${day.weatherIcon}.png" alt="Weather icon">
+            <p>Weather Description: ${day.weatherDescription}</p>
+            <p>Weather Summary: ${day.weatherSummary}</p>
+            <p>Min Temperature: ${day.minTemp}</p>
+            <p>Max Temperature: ${day.maxTemp}</p>
+            <p>Day Feels Like: ${day.dayFeelsLike}</p>
+            <p>Night Feels Like: ${day.nightFeelsLike}</p>
+            <p>Humidity: ${day.humidity}</p>
+            <p>Wind Speed: ${day.windSpeed}</p>
+            <p>Wind Direction: ${day.windDeg}</p>
+        </div>
+    `).join('');
 }
 
 const runWeather = async (city) => {

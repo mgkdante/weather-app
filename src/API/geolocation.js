@@ -1,4 +1,4 @@
-import {GOOGLE_MAPS_API_KEY} from "../api_keys";
+import {GOOGLE_MAPS_API_KEY} from "../api_keys.js";
 
 // Encodes the city name
 const encodeCity = (city) => {

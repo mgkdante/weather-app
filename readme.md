@@ -2,20 +2,6 @@
 
 This is a weather application that fetches weather data for a specific city.
 
-## Built With
-
-This project is built with [Deno](https://deno.land/), a secure runtime for JavaScript and TypeScript.
-
-## Running the Project
-
-To run this project, you need to have Deno installed on your machine. You can install it by following the instructions on the [official Deno website](https://deno.land/#installation).
-
-Once Deno is installed, you can run the project with the following command:
-
-```bash
-deno run --allow-read --allow-env --allow-net index.js
-```
-
 ## index.js
 
 In `index.js`, the application imports the `getWeather` function from `API/weather.js` and the `currentWeather`, `hourlyWeather`, and `dailyWeather` functions from `Data/current.js`, `Data/hourly.js`, and `Data/daily.js` respectively. 

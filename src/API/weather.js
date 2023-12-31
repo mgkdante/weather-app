@@ -1,4 +1,4 @@
-import {OWM_API_KEY} from "../api_keys";
+import {OWM_API_KEY} from "../api_keys.js";
 import {getCityGeoCode} from "./geolocation.js";
 
 // Fetches the geocode for a city
