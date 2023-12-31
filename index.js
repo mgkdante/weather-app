@@ -3,8 +3,8 @@ import {currentWeather} from "./Data/current.js";
 import {hourlyWeather} from "./Data/hourly.js";
 import {dailyWeather} from "./Data/daily.js";
 
-const categorizeData = async () => {
-    const rawData = await getWeather('Sherbrooke')
+const categorizeData = async (city) => {
+    const rawData = await getWeather(city)
     return {
         currentWeather: rawData.current,
         hourlyWeather: rawData.hourly,
@@ -12,8 +12,8 @@ const categorizeData = async () => {
     }
 }
 
-const runWeather = async () => {
-    const data = await categorizeData()
+const runWeather = async (city) => {
+    const data = await categorizeData(city)
     const current = await currentWeather(data.currentWeather)
     const hourly = await hourlyWeather(data.hourlyWeather)
     const daily = await dailyWeather(data.dailyWeather)
@@ -23,4 +23,4 @@ const runWeather = async () => {
     console.log('Daily Weather:', daily)
 }
 
-runWeather()
+runWeather('Sherbrooke')

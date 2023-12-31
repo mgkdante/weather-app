@@ -10,7 +10,7 @@ const getGeoCode = async (city) => {
 
 // Builds the weather API URL
 const buildWeatherApiUrl = (latitude, longitude, units) => {
-    const APIkey = '';
+    const APIkey = process.env.OWM_API_KEY;
     return `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=${units}&appid=${APIkey}`;
 }
 
