@@ -1,3 +1,5 @@
+import {load} from "https://deno.land/std@0.210.0/dotenv/mod.ts";
+
 import {getCityGeoCode} from "./geolocation.js";
 // Fetches the geocode for a city
 const getGeoCode = async (city) => {
@@ -9,9 +11,8 @@ const getGeoCode = async (city) => {
 }
 
 // Builds the weather API URL
-const buildWeatherApiUrl = (latitude, longitude, units) => {
-    const APIkey = process.env.OWM_API_KEY;
-    return `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=${units}&appid=${APIkey}`;
+const buildWeatherApiUrl = (latitude, longitude, units, APIKEY) => {
+    return `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=${units}&appid=${APIKEY}`;
 }
 
 // Fetches the weather data for a city
@@ -30,10 +31,12 @@ const fetchWeatherData = async (url, city) => {
 
 // Main function to get the weather for a city
 const getWeather = async (city, units="metric") => {
+    await load({export: true})
     const geoCode = await getGeoCode(city)
     const latitude = geoCode.lat
     const longitude = geoCode.lng
-    const url = buildWeatherApiUrl(latitude, longitude, units)
+    const key = Deno.env.get("OWM_API_KEY")
+    const url = buildWeatherApiUrl(latitude, longitude, units, key)
     return await fetchWeatherData(url, city);
 }
 
