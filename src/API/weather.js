@@ -1,4 +1,4 @@
-import {load} from "https://deno.land/std@0.210.0/dotenv/mod.ts";
+import {OWM_API_KEY} from "../api_keys";
 import {getCityGeoCode} from "./geolocation.js";
 
 // Fetches the geocode for a city
@@ -31,12 +31,10 @@ const fetchWeatherData = async (url, city) => {
 
 // Main function to get the weather for a city
 const getWeather = async (city, units="metric") => {
-    await load({export: true})
     const geoCode = await getGeoCode(city)
     const latitude = geoCode.lat
     const longitude = geoCode.lng
-    const key = Deno.env.get("OWM_API_KEY")
-    const url = buildWeatherApiUrl(latitude, longitude, units, key)
+    const url = buildWeatherApiUrl(latitude, longitude, units, OWM_API_KEY)
     return await fetchWeatherData(url, city);
 }
 

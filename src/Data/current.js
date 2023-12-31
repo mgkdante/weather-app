@@ -1,7 +1,15 @@
 const getTime = (dt) => {
     const time = new Date(0);
     time.setUTCSeconds(dt);
-    return time.toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'});
+    return time.toLocaleDateString(undefined, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
 }
 
 const getWeatherDescription = (weather) => {
@@ -15,6 +23,7 @@ const getRoundedValue = (value) => {
 const currentWeather = async (currentData) => {
     const time = getTime(currentData.dt);
     const weatherDescription = getWeatherDescription(currentData.weather);
+    const weatherIcon = currentData.weather[0].icon;
     const temp = getRoundedValue(currentData.temp);
     const feelsLike = getRoundedValue(currentData.feels_like);
     const humidity = currentData.humidity;
@@ -24,6 +33,7 @@ const currentWeather = async (currentData) => {
     return {
         time: time,
         weatherDescription: weatherDescription,
+        weatherIcon: weatherIcon,
         temp: temp,
         feelsLike: feelsLike,
         humidity: humidity,

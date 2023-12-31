@@ -1,5 +1,6 @@
+import {GOOGLE_MAPS_API_KEY} from "../api_keys";
+
 // Encodes the city name
-import {load} from "https://deno.land/std@0.210.0/dotenv/mod.ts";
 const encodeCity = (city) => {
     return encodeURIComponent(city);
 }
@@ -28,10 +29,8 @@ const processResponse = (data, city) => {
 
 // Fetches the geocode for a city from the Google Maps API
 const getCityGeoCode = async (city) => {
-    await load({export: true})
     const encodedCity = encodeCity(city);
-    const APIKEY = Deno.env.get("GOOGLE_MAPS_API_KEY")
-    const data = await fetchData(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedCity}&key=${APIKEY}`);
+    const data = await fetchData(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedCity}&key=${GOOGLE_MAPS_API_KEY}`);
     return processResponse(data, city);
 }
 

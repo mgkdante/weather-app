@@ -10,6 +10,7 @@ const dailyWeather = async (dailyData) => {
         const time = getTime(data.dt);
         const weatherDescription = getWeatherDescription(data.weather);
         const weatherSummary = getWeatherSummary(data.summary);
+        const weatherIcon = data.weather[0].icon;
         const minTemp = getRoundedValue(data.temp.min);
         const maxTemp = getRoundedValue(data.temp.max);
         const dayFeelsLike = getRoundedValue(data.feels_like.day);
@@ -22,6 +23,7 @@ const dailyWeather = async (dailyData) => {
             time: time,
             weatherDescription: weatherDescription,
             weatherSummary: weatherSummary,
+            weatherIcon: weatherIcon,
             minTemp: minTemp,
             maxTemp: maxTemp,
             dayFeelsLike: dayFeelsLike,
