@@ -1,7 +1,7 @@
 const getTime = (dt) => {
     const time = new Date(0);
     time.setUTCSeconds(dt);
-    return time;
+    return time.toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'});
 }
 
 const getWeatherDescription = (weather) => {
@@ -32,4 +32,4 @@ const currentWeather = async (currentData) => {
     }
 }
 
-export {currentWeather}
+export {currentWeather, getTime, getWeatherDescription, getRoundedValue}

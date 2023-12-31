@@ -1,16 +1,4 @@
-const getTime = (dt) => {
-    const time = new Date(0);
-    time.setUTCSeconds(dt);
-    return time;
-}
-
-const getWeatherDescription = (weather) => {
-    return weather[0].description;
-}
-
-const getRoundedValue = (value) => {
-    return Math.round(value);
-}
+import {getTime, getWeatherDescription, getRoundedValue} from "./current.js";
 
 const hourlyWeather = async (hourlyData) => {
     return hourlyData.slice(0, 24).map((data) => {

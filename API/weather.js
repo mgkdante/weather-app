@@ -1,6 +1,6 @@
 import {load} from "https://deno.land/std@0.210.0/dotenv/mod.ts";
-
 import {getCityGeoCode} from "./geolocation.js";
+
 // Fetches the geocode for a city
 const getGeoCode = async (city) => {
     const geoCode = await getCityGeoCode(city)

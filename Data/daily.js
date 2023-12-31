@@ -1,20 +1,9 @@
-const getTime = (dt) => {
-    const time = new Date(0);
-    time.setUTCSeconds(dt);
-    return time;
-}
-
-const getWeatherDescription = (weather) => {
-    return weather[0].description;
-}
+import {getTime, getRoundedValue, getWeatherDescription} from "./current.js";
 
 const getWeatherSummary = (summary) => {
     return summary;
 }
 
-const getRoundedValue = (value) => {
-    return Math.round(value);
-}
 
 const dailyWeather = async (dailyData) => {
     return dailyData.map((data) => {
