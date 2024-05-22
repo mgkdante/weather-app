@@ -7,7 +7,7 @@ const getLastXDay = (x) => {
 const generateWeatherUrls = (city) => {
   const apiKey = "538e121b787842e0b1c155708241905";
   return {
-    forecast: `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=3`,
+    forecast: `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=4`,
     history: [
       `https://api.weatherapi.com/v1/history.json?key=${apiKey}&q=${city}&dt=${getLastXDay(1)}`,
       `https://api.weatherapi.com/v1/history.json?key=${apiKey}&q=${city}&dt=${getLastXDay(2)}`,
@@ -66,21 +66,61 @@ const getCurrent = async (city) => {
 
 const getForecast = async (city) => {
   const forecast = await getForecastJSON(city);
+  const forecastList = [];
   forecast.forecast.forecastday.forEach((forecast) => {
-    console.log(forecast.day);
+    forecastList.push({
+      date: forecast.date,
+      maxTempC: forecast.day.maxtemp_c,
+      minTempC: forecast.day.mintemp_c,
+      avgTempC: forecast.day.avgtemp_c,
+      maxTempF: forecast.day.maxtemp_f,
+      minTempF: forecast.day.mintemp_f,
+      avgTempF: forecast.day.avgtemp_f,
+      avgHumidity: forecast.day.avghumidity,
+      condition: forecast.day.condition.text,
+      conditionIcon: forecast.day.condition.icon,
+      uv: forecast.day.uv,
+      sunrise: forecast.astro.sunrise,
+      sunset: forecast.astro.sunset,
+      moonrise: forecast.astro.moonrise,
+      moonset: forecast.astro.moonset,
+    });
   });
+  return forecastList;
 };
 
-const logHistory = async (city) => {
+const getHistory = async (city) => {
   const history = await getHistoryJSON(city);
+  const historyList = [];
   history.historyData.forEach((history) => {
-    console.log(history.forecast.forecastday);
+    const forecast = history.forecast.forecastday[0];
+    historyList.push({
+      date: forecast.date,
+      maxTempC: forecast.day.maxtemp_c,
+      minTempC: forecast.day.mintemp_c,
+      avgTempC: forecast.day.avgtemp_c,
+      maxTempF: forecast.day.maxtemp_f,
+      minTempF: forecast.day.mintemp_f,
+      avgTempF: forecast.day.avgtemp_f,
+      avgHumidity: forecast.day.avghumidity,
+      condition: forecast.day.condition.text,
+      conditionIcon: forecast.day.condition.icon,
+      uv: forecast.day.uv,
+      sunrise: forecast.astro.sunrise,
+      sunset: forecast.astro.sunset,
+      moonrise: forecast.astro.moonrise,
+      moonset: forecast.astro.moonset,
+    });
   });
+  return historyList;
 };
 
-const logger = async (city) => {
-  const current = await getCurrent(city);
-  console.log(current);
+const getAllData = (city) => {
+  return {
+    current: getCurrent(city),
+    forecast: getForecast(city),
+    history: getHistory(city),
+  };
 };
 
-logger("Montreal");
+export { getAllData };
