@@ -105,8 +105,9 @@ body {
 #search-city {
   outline: none;
   border-radius: 0.5rem;
-  background: none;
+  background: rgba(255, 255, 255, 25%);
   color: var(--tertiary-color);
+  padding-left: 0.5rem;
 }
 
 #search-city:focus {
