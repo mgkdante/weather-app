@@ -1,25 +1,43 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="index.js" defer></script>
     <title>Weather App</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <section class="current-search">
-            <article id="current">
-
-            </article>
-            <div id="search">
-                <label>
-                    <input type="search" placeholder="Montreal, QC" id="search-city">
-                </label>
-            </div>
-        </section>
+      <section class="current-search">
+        <div id="search">
+          <div class="switch-container">
+            <span class="switch-label">C°</span>
+            <label class="switch">
+              <input type="checkbox" id="unit-toggle" />
+              <span class="slider round"></span>
+            </label>
+            <span class="switch-label">F°</span>
+          </div>
+          <label>
+            <input type="search" placeholder="Montreal, QC" id="search-city" />
+          </label>
+        </div>
+        <article id="current">
+          <div class="condition">
+            <img src="" alt="condition icon" id="current-condition-img" />
+            <h2 id="current-condition"></h2>
+          </div>
+          <h2 id="current-temperature"></h2>
+          <p id="current-humidity"></p>
+          <p id="current-uv"></p>
+          <p id="current-feels-like"><strong></strong></p>
+          <p id="current-last-updated"></p>
+        </article>
+      </section>
     </main>
-</body>
+  </body>
 </html>
