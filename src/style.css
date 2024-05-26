@@ -56,6 +56,9 @@ h6 {
 /*
   8. Create a root stacking context
 */
+body {
+  background: url("background.png") no-repeat center center fixed;
+}
 
 :root {
   --primary-color: #0ea5e9;
@@ -76,6 +79,7 @@ h6 {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  backdrop-filter: blur(10px);
 }
 
 #search {
@@ -98,12 +102,14 @@ h6 {
   align-items: center;
 }
 
-input {
+#search-city {
   outline: none;
   border-radius: 0.5rem;
+  background: none;
+  color: var(--tertiary-color);
 }
 
-input:focus {
+#search-city:focus {
   border: var(--secondary-color) 2px solid;
 }
 
@@ -176,4 +182,5 @@ input:checked + .slider:before {
 .switch-label {
   margin: 0 10px;
   font-size: 14px;
+  color: var(--tertiary-color);
 }
